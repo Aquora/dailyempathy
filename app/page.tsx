@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import Link from "next/link";
 import ParticleWave from "./components/ParticleWave";
 import { motion } from "motion/react";
@@ -10,8 +12,18 @@ export default function Home() {
       {/* Particle Wave Background */}
       <ParticleWave />
 
-      {/* Sign In -- top right */}
-      <header className="fixed top-0 right-0 z-20 p-8">
+      {/* Top bar with logo and sign in */}
+      <header className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6">
+        <div className="flex items-center gap-3">
+          <Image
+            src="/logo.png"
+            alt="DailyEmpathy logo"
+            width={32}
+            height={32}
+            className="rounded-full"
+          />
+          <span className="font-serif text-lg text-white/90">DailyEmpathy</span>
+        </div>
         <Link
           href="/auth/signin"
           className="font-mono text-sm tracking-widest text-gold transition-colors hover:text-gold-dim"

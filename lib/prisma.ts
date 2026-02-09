@@ -1,14 +1,20 @@
 import { PrismaClient } from "./generated/prisma/client";
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
-// Use the same SQLite database file as configured in prisma.config.ts
-// (file:./dev.db in the project root)
-const adapter = new PrismaBetterSqlite3({
-  url: "file:./dev.db",
+const databaseUrl = process.env.DATABASE_URL;
+
+if (!databaseUrl) {
+  console.warn(
+    "DATABASE_URL is not set. Prisma client will fail to connect until you configure it."
+  );
+}
+
+const adapter = new PrismaPg({
+  connectionString: databaseUrl || "",
 });
 
 export const prisma =

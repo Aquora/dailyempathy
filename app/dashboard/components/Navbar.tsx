@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import ProfileDropdown from "./ProfileDropdown";
@@ -16,8 +18,15 @@ export default function Navbar({ userName, userEmail }: NavbarProps) {
     <nav className="fixed top-0 left-0 right-0 z-50 flex h-16 items-center border-b border-white/10 bg-[#0a0a0a]/80 px-8 backdrop-blur-sm">
       {/* Left: Brand */}
       <div className="flex w-1/3 items-center">
-        <Link href="/dashboard" className="font-serif text-xl text-gold">
-          DailyEmpathy
+        <Link href="/dashboard" className="flex items-center gap-2">
+          <Image
+            src="/logo.png"
+            alt="DailyEmpathy logo"
+            width={28}
+            height={28}
+            className="rounded-full"
+          />
+          <span className="font-serif text-xl text-gold">DailyEmpathy</span>
         </Link>
       </div>
 

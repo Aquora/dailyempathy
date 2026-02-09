@@ -96,6 +96,7 @@ export default function DashboardClient({
         onClose={() => setShowDayOverlay(false)}
         onEventsChanged={fetchEvents}
       />
+
     </>
   );
 }

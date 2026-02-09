@@ -19,8 +19,8 @@ const config: runtime.GetPrismaClientConfig = {
   "previewFeatures": [],
   "clientVersion": "7.3.0",
   "engineVersion": "9d6ad21cbbceab97458517b147a6a09ff43aa735",
-  "activeProvider": "sqlite",
-  "inlineSchema": "datasource db {\n  provider = \"sqlite\"\n}\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../lib/generated/prisma\"\n}\n\nmodel User {\n  id                 String          @id @default(cuid())\n  name               String?\n  email              String          @unique\n  hashedPassword     String\n  googleAccessToken  String?\n  googleRefreshToken String?\n  googleTokenExpiry  DateTime?\n  events             CalendarEvent[]\n  createdAt          DateTime        @default(now())\n  updatedAt          DateTime        @updatedAt\n}\n\nmodel CalendarEvent {\n  id        String   @id @default(cuid())\n  title     String\n  category  String\n  status    String   @default(\"planned\")\n  startDate DateTime @default(now())\n  endDate   DateTime\n  source    String   @default(\"manual\")\n  googleId  String?\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n",
+  "activeProvider": "postgresql",
+  "inlineSchema": "datasource db {\n  provider = \"postgresql\"\n}\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../lib/generated/prisma\"\n}\n\nmodel User {\n  id                 String          @id @default(cuid())\n  name               String?\n  email              String          @unique\n  hashedPassword     String\n  googleAccessToken  String?\n  googleRefreshToken String?\n  googleTokenExpiry  DateTime?\n  events             CalendarEvent[]\n  createdAt          DateTime        @default(now())\n  updatedAt          DateTime        @updatedAt\n}\n\nmodel CalendarEvent {\n  id        String   @id @default(cuid())\n  title     String\n  category  String\n  status    String   @default(\"planned\")\n  startDate DateTime @default(now())\n  endDate   DateTime\n  source    String   @default(\"manual\")\n  googleId  String?\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -37,10 +37,10 @@ async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Modul
 }
 
 config.compilerWasm = {
-  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.sqlite.mjs"),
+  getRuntime: async () => await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.mjs"),
 
   getQueryCompilerWasmModule: async () => {
-    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.sqlite.wasm-base64.mjs")
+    const { wasm } = await import("@prisma/client/runtime/query_compiler_fast_bg.postgresql.wasm-base64.mjs")
     return await decodeBase64AsWasm(wasm)
   },
 
