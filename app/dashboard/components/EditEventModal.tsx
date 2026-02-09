@@ -53,6 +53,11 @@ export default function EditEventModal({
     e.preventDefault();
     setError("");
 
+    if (!event) {
+      setError("Event not found");
+      return;
+    }
+
     if (!title.trim() || !endDate) {
       setError("Title and end date are required");
       return;
