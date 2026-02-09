@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   title: "DailyEmpathy",
   description:
     "A calendar, tasks, and your personal motivational companion — all in one place.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({

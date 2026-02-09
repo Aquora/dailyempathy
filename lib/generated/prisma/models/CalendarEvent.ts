@@ -524,6 +524,7 @@ export type CalendarEventCreateOrConnectWithoutUserInput = {
 
 export type CalendarEventCreateManyUserInputEnvelope = {
   data: Prisma.CalendarEventCreateManyUserInput | Prisma.CalendarEventCreateManyUserInput[]
+  skipDuplicates?: boolean
 }
 
 export type CalendarEventUpsertWithWhereUniqueWithoutUserInput = {
@@ -1364,6 +1365,7 @@ export type CalendarEventCreateManyArgs<ExtArgs extends runtime.Types.Extensions
    * The data used to create many CalendarEvents.
    */
   data: Prisma.CalendarEventCreateManyInput | Prisma.CalendarEventCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1382,6 +1384,7 @@ export type CalendarEventCreateManyAndReturnArgs<ExtArgs extends runtime.Types.E
    * The data used to create many CalendarEvents.
    */
   data: Prisma.CalendarEventCreateManyInput | Prisma.CalendarEventCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
