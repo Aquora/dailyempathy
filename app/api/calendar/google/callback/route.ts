@@ -27,7 +27,8 @@ export async function GET(request: NextRequest) {
 
   const clientId = process.env.GOOGLE_CLIENT_ID;
   const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+  // Must match the redirect_uri used in the auth route (same origin as this request)
+  const redirectUri = `${new URL(request.url).origin}/api/calendar/google/callback`;
 
   if (!clientId || !clientSecret) {
     return NextResponse.redirect(
@@ -38,7 +39,7 @@ export async function GET(request: NextRequest) {
   const oauth2Client = new google.auth.OAuth2(
     clientId,
     clientSecret,
-    `${appUrl}/api/calendar/google/callback`
+    redirectUri
   );
 
   try {

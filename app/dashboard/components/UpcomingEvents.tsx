@@ -127,6 +127,11 @@ export default function UpcomingEvents({
                       via Google Calendar
                     </span>
                   )}
+                  {event.source === "canvas" && (
+                    <span className="mt-1 inline-block font-mono text-[10px] text-white/20">
+                      via Canvas
+                    </span>
+                  )}
                 </div>
               );
             })}

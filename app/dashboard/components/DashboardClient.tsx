@@ -5,6 +5,7 @@ import CalendarWidget from "./CalendarWidget";
 import AddEventModal from "./AddEventModal";
 import UpcomingEvents from "./UpcomingEvents";
 import GoogleImportDropdown from "./GoogleImportDropdown";
+import CanvasImportDropdown from "./CanvasImportDropdown";
 import TodoList from "./TodoList";
 import SpotifyLofiWidget from "./SpotifyLofiWidget";
 import type { CalendarEvent } from "./types";
@@ -12,10 +13,12 @@ import DayEventsOverlay from "./DayEventsOverlay";
 
 interface DashboardClientProps {
   googleConnected: boolean;
+  canvasConnected: boolean;
 }
 
 export default function DashboardClient({
   googleConnected,
+  canvasConnected,
 }: DashboardClientProps) {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -55,10 +58,16 @@ export default function DashboardClient({
             selectedDate={selectedDate}
             googleConnected={googleConnected}
           >
-            <GoogleImportDropdown
-              googleConnected={googleConnected}
-              onSyncComplete={fetchEvents}
-            />
+            <div className="flex items-center gap-2">
+              <CanvasImportDropdown
+                canvasConnected={canvasConnected}
+                onSyncComplete={fetchEvents}
+              />
+              <GoogleImportDropdown
+                googleConnected={googleConnected}
+                onSyncComplete={fetchEvents}
+              />
+            </div>
           </CalendarWidget>
 
           {/* Todo list under calendar */}

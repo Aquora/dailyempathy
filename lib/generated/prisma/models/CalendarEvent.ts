@@ -33,6 +33,7 @@ export type CalendarEventMinAggregateOutputType = {
   endDate: Date | null
   source: string | null
   googleId: string | null
+  canvasId: string | null
   userId: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -47,6 +48,7 @@ export type CalendarEventMaxAggregateOutputType = {
   endDate: Date | null
   source: string | null
   googleId: string | null
+  canvasId: string | null
   userId: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -61,6 +63,7 @@ export type CalendarEventCountAggregateOutputType = {
   endDate: number
   source: number
   googleId: number
+  canvasId: number
   userId: number
   createdAt: number
   updatedAt: number
@@ -77,6 +80,7 @@ export type CalendarEventMinAggregateInputType = {
   endDate?: true
   source?: true
   googleId?: true
+  canvasId?: true
   userId?: true
   createdAt?: true
   updatedAt?: true
@@ -91,6 +95,7 @@ export type CalendarEventMaxAggregateInputType = {
   endDate?: true
   source?: true
   googleId?: true
+  canvasId?: true
   userId?: true
   createdAt?: true
   updatedAt?: true
@@ -105,6 +110,7 @@ export type CalendarEventCountAggregateInputType = {
   endDate?: true
   source?: true
   googleId?: true
+  canvasId?: true
   userId?: true
   createdAt?: true
   updatedAt?: true
@@ -192,6 +198,7 @@ export type CalendarEventGroupByOutputType = {
   endDate: Date
   source: string
   googleId: string | null
+  canvasId: string | null
   userId: string
   createdAt: Date
   updatedAt: Date
@@ -227,6 +234,7 @@ export type CalendarEventWhereInput = {
   endDate?: Prisma.DateTimeFilter<"CalendarEvent"> | Date | string
   source?: Prisma.StringFilter<"CalendarEvent"> | string
   googleId?: Prisma.StringNullableFilter<"CalendarEvent"> | string | null
+  canvasId?: Prisma.StringNullableFilter<"CalendarEvent"> | string | null
   userId?: Prisma.StringFilter<"CalendarEvent"> | string
   createdAt?: Prisma.DateTimeFilter<"CalendarEvent"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CalendarEvent"> | Date | string
@@ -242,6 +250,7 @@ export type CalendarEventOrderByWithRelationInput = {
   endDate?: Prisma.SortOrder
   source?: Prisma.SortOrder
   googleId?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasId?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -260,6 +269,7 @@ export type CalendarEventWhereUniqueInput = Prisma.AtLeast<{
   endDate?: Prisma.DateTimeFilter<"CalendarEvent"> | Date | string
   source?: Prisma.StringFilter<"CalendarEvent"> | string
   googleId?: Prisma.StringNullableFilter<"CalendarEvent"> | string | null
+  canvasId?: Prisma.StringNullableFilter<"CalendarEvent"> | string | null
   userId?: Prisma.StringFilter<"CalendarEvent"> | string
   createdAt?: Prisma.DateTimeFilter<"CalendarEvent"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CalendarEvent"> | Date | string
@@ -275,6 +285,7 @@ export type CalendarEventOrderByWithAggregationInput = {
   endDate?: Prisma.SortOrder
   source?: Prisma.SortOrder
   googleId?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasId?: Prisma.SortOrderInput | Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -295,6 +306,7 @@ export type CalendarEventScalarWhereWithAggregatesInput = {
   endDate?: Prisma.DateTimeWithAggregatesFilter<"CalendarEvent"> | Date | string
   source?: Prisma.StringWithAggregatesFilter<"CalendarEvent"> | string
   googleId?: Prisma.StringNullableWithAggregatesFilter<"CalendarEvent"> | string | null
+  canvasId?: Prisma.StringNullableWithAggregatesFilter<"CalendarEvent"> | string | null
   userId?: Prisma.StringWithAggregatesFilter<"CalendarEvent"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CalendarEvent"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CalendarEvent"> | Date | string
@@ -309,6 +321,7 @@ export type CalendarEventCreateInput = {
   endDate: Date | string
   source?: string
   googleId?: string | null
+  canvasId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutEventsInput
@@ -323,6 +336,7 @@ export type CalendarEventUncheckedCreateInput = {
   endDate: Date | string
   source?: string
   googleId?: string | null
+  canvasId?: string | null
   userId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -337,6 +351,7 @@ export type CalendarEventUpdateInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutEventsNestedInput
@@ -351,6 +366,7 @@ export type CalendarEventUncheckedUpdateInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -365,6 +381,7 @@ export type CalendarEventCreateManyInput = {
   endDate: Date | string
   source?: string
   googleId?: string | null
+  canvasId?: string | null
   userId: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -379,6 +396,7 @@ export type CalendarEventUpdateManyMutationInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -392,6 +410,7 @@ export type CalendarEventUncheckedUpdateManyInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -416,6 +435,7 @@ export type CalendarEventCountOrderByAggregateInput = {
   endDate?: Prisma.SortOrder
   source?: Prisma.SortOrder
   googleId?: Prisma.SortOrder
+  canvasId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -430,6 +450,7 @@ export type CalendarEventMaxOrderByAggregateInput = {
   endDate?: Prisma.SortOrder
   source?: Prisma.SortOrder
   googleId?: Prisma.SortOrder
+  canvasId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -444,6 +465,7 @@ export type CalendarEventMinOrderByAggregateInput = {
   endDate?: Prisma.SortOrder
   source?: Prisma.SortOrder
   googleId?: Prisma.SortOrder
+  canvasId?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -500,6 +522,7 @@ export type CalendarEventCreateWithoutUserInput = {
   endDate: Date | string
   source?: string
   googleId?: string | null
+  canvasId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -513,6 +536,7 @@ export type CalendarEventUncheckedCreateWithoutUserInput = {
   endDate: Date | string
   source?: string
   googleId?: string | null
+  canvasId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -555,6 +579,7 @@ export type CalendarEventScalarWhereInput = {
   endDate?: Prisma.DateTimeFilter<"CalendarEvent"> | Date | string
   source?: Prisma.StringFilter<"CalendarEvent"> | string
   googleId?: Prisma.StringNullableFilter<"CalendarEvent"> | string | null
+  canvasId?: Prisma.StringNullableFilter<"CalendarEvent"> | string | null
   userId?: Prisma.StringFilter<"CalendarEvent"> | string
   createdAt?: Prisma.DateTimeFilter<"CalendarEvent"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CalendarEvent"> | Date | string
@@ -569,6 +594,7 @@ export type CalendarEventCreateManyUserInput = {
   endDate: Date | string
   source?: string
   googleId?: string | null
+  canvasId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -582,6 +608,7 @@ export type CalendarEventUpdateWithoutUserInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -595,6 +622,7 @@ export type CalendarEventUncheckedUpdateWithoutUserInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -608,6 +636,7 @@ export type CalendarEventUncheckedUpdateManyWithoutUserInput = {
   endDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   source?: Prisma.StringFieldUpdateOperationsInput | string
   googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -623,6 +652,7 @@ export type CalendarEventSelect<ExtArgs extends runtime.Types.Extensions.Interna
   endDate?: boolean
   source?: boolean
   googleId?: boolean
+  canvasId?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -638,6 +668,7 @@ export type CalendarEventSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   endDate?: boolean
   source?: boolean
   googleId?: boolean
+  canvasId?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -653,6 +684,7 @@ export type CalendarEventSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   endDate?: boolean
   source?: boolean
   googleId?: boolean
+  canvasId?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -668,12 +700,13 @@ export type CalendarEventSelectScalar = {
   endDate?: boolean
   source?: boolean
   googleId?: boolean
+  canvasId?: boolean
   userId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CalendarEventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "category" | "status" | "startDate" | "endDate" | "source" | "googleId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["calendarEvent"]>
+export type CalendarEventOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "category" | "status" | "startDate" | "endDate" | "source" | "googleId" | "canvasId" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["calendarEvent"]>
 export type CalendarEventInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -698,6 +731,7 @@ export type $CalendarEventPayload<ExtArgs extends runtime.Types.Extensions.Inter
     endDate: Date
     source: string
     googleId: string | null
+    canvasId: string | null
     userId: string
     createdAt: Date
     updatedAt: Date
@@ -1133,6 +1167,7 @@ export interface CalendarEventFieldRefs {
   readonly endDate: Prisma.FieldRef<"CalendarEvent", 'DateTime'>
   readonly source: Prisma.FieldRef<"CalendarEvent", 'String'>
   readonly googleId: Prisma.FieldRef<"CalendarEvent", 'String'>
+  readonly canvasId: Prisma.FieldRef<"CalendarEvent", 'String'>
   readonly userId: Prisma.FieldRef<"CalendarEvent", 'String'>
   readonly createdAt: Prisma.FieldRef<"CalendarEvent", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"CalendarEvent", 'DateTime'>

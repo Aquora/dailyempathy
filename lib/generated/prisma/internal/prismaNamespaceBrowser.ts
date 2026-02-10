@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  CanvasInstitution: 'CanvasInstitution',
   User: 'User',
   CalendarEvent: 'CalendarEvent'
 } as const
@@ -71,6 +72,17 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const CanvasInstitutionScalarFieldEnum = {
+  id: 'id',
+  baseUrl: 'baseUrl',
+  name: 'name',
+  clientId: 'clientId',
+  clientSecret: 'clientSecret'
+} as const
+
+export type CanvasInstitutionScalarFieldEnum = (typeof CanvasInstitutionScalarFieldEnum)[keyof typeof CanvasInstitutionScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -79,6 +91,10 @@ export const UserScalarFieldEnum = {
   googleAccessToken: 'googleAccessToken',
   googleRefreshToken: 'googleRefreshToken',
   googleTokenExpiry: 'googleTokenExpiry',
+  canvasInstitutionId: 'canvasInstitutionId',
+  canvasAccessToken: 'canvasAccessToken',
+  canvasRefreshToken: 'canvasRefreshToken',
+  canvasTokenExpiry: 'canvasTokenExpiry',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -95,6 +111,7 @@ export const CalendarEventScalarFieldEnum = {
   endDate: 'endDate',
   source: 'source',
   googleId: 'googleId',
+  canvasId: 'canvasId',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

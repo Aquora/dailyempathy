@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.3.0",
   "engineVersion": "9d6ad21cbbceab97458517b147a6a09ff43aa735",
   "activeProvider": "postgresql",
-  "inlineSchema": "datasource db {\n  provider = \"postgresql\"\n}\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../lib/generated/prisma\"\n}\n\nmodel User {\n  id                 String          @id @default(cuid())\n  name               String?\n  email              String          @unique\n  hashedPassword     String\n  googleAccessToken  String?\n  googleRefreshToken String?\n  googleTokenExpiry  DateTime?\n  events             CalendarEvent[]\n  createdAt          DateTime        @default(now())\n  updatedAt          DateTime        @updatedAt\n}\n\nmodel CalendarEvent {\n  id        String   @id @default(cuid())\n  title     String\n  category  String\n  status    String   @default(\"planned\")\n  startDate DateTime @default(now())\n  endDate   DateTime\n  source    String   @default(\"manual\")\n  googleId  String?\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n",
+  "inlineSchema": "datasource db {\n  provider = \"postgresql\"\n}\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../lib/generated/prisma\"\n}\n\nmodel CanvasInstitution {\n  id           String @id @default(cuid())\n  baseUrl      String @unique\n  name         String\n  clientId     String\n  clientSecret String\n  users        User[]\n}\n\nmodel User {\n  id                  String             @id @default(cuid())\n  name                String?\n  email               String             @unique\n  hashedPassword      String\n  googleAccessToken   String?\n  googleRefreshToken  String?\n  googleTokenExpiry   DateTime?\n  canvasInstitutionId String?\n  canvasInstitution   CanvasInstitution? @relation(fields: [canvasInstitutionId], references: [id], onDelete: SetNull)\n  canvasAccessToken   String?\n  canvasRefreshToken  String?\n  canvasTokenExpiry   DateTime?\n  events              CalendarEvent[]\n  createdAt           DateTime           @default(now())\n  updatedAt           DateTime           @updatedAt\n}\n\nmodel CalendarEvent {\n  id        String   @id @default(cuid())\n  title     String\n  category  String\n  status    String   @default(\"planned\")\n  startDate DateTime @default(now())\n  endDate   DateTime\n  source    String   @default(\"manual\")\n  googleId  String?\n  canvasId  String?\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hashedPassword\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleAccessToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleRefreshToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleTokenExpiry\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"events\",\"kind\":\"object\",\"type\":\"CalendarEvent\",\"relationName\":\"CalendarEventToUser\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"CalendarEvent\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"source\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"CalendarEventToUser\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"CanvasInstitution\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"baseUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"clientId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"clientSecret\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"CanvasInstitutionToUser\"}],\"dbName\":null},\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hashedPassword\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleAccessToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleRefreshToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleTokenExpiry\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"canvasInstitutionId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"canvasInstitution\",\"kind\":\"object\",\"type\":\"CanvasInstitution\",\"relationName\":\"CanvasInstitutionToUser\"},{\"name\":\"canvasAccessToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"canvasRefreshToken\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"canvasTokenExpiry\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"events\",\"kind\":\"object\",\"type\":\"CalendarEvent\",\"relationName\":\"CalendarEventToUser\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"CalendarEvent\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"category\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"source\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"googleId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"canvasId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"CalendarEventToUser\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -60,8 +60,8 @@ export interface PrismaClientConstructor {
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more CanvasInstitutions
+   * const canvasInstitutions = await prisma.canvasInstitution.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -82,8 +82,8 @@ export interface PrismaClientConstructor {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more CanvasInstitutions
+ * const canvasInstitutions = await prisma.canvasInstitution.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -177,6 +177,16 @@ export interface PrismaClient<
   }>>
 
       /**
+   * `prisma.canvasInstitution`: Exposes CRUD operations for the **CanvasInstitution** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CanvasInstitutions
+    * const canvasInstitutions = await prisma.canvasInstitution.findMany()
+    * ```
+    */
+  get canvasInstitution(): Prisma.CanvasInstitutionDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts

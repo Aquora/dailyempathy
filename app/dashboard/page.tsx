@@ -10,13 +10,23 @@ export default async function DashboardPage() {
     redirect("/auth/signin");
   }
 
-  // Check if user has Google Calendar connected
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
-    select: { googleRefreshToken: true },
+    select: {
+      googleRefreshToken: true,
+      canvasInstitutionId: true,
+      canvasAccessToken: true,
+    },
   });
 
   const googleConnected = !!user?.googleRefreshToken;
+  const canvasConnected =
+    !!user?.canvasInstitutionId && !!user?.canvasAccessToken;
 
-  return <DashboardClient googleConnected={googleConnected} />;
+  return (
+    <DashboardClient
+      googleConnected={googleConnected}
+      canvasConnected={canvasConnected}
+    />
+  );
 }

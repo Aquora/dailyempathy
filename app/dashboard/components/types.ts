@@ -7,6 +7,7 @@ export interface CalendarEvent {
   endDate: string;
   source: string;
   googleId: string | null;
+  canvasId: string | null;
   userId: string;
   createdAt: string;
   updatedAt: string;

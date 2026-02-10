@@ -384,6 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  CanvasInstitution: 'CanvasInstitution',
   User: 'User',
   CalendarEvent: 'CalendarEvent'
 } as const
@@ -401,10 +402,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "calendarEvent"
+    modelProps: "canvasInstitution" | "user" | "calendarEvent"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    CanvasInstitution: {
+      payload: Prisma.$CanvasInstitutionPayload<ExtArgs>
+      fields: Prisma.CanvasInstitutionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CanvasInstitutionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CanvasInstitutionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload>
+        }
+        findFirst: {
+          args: Prisma.CanvasInstitutionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CanvasInstitutionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload>
+        }
+        findMany: {
+          args: Prisma.CanvasInstitutionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload>[]
+        }
+        create: {
+          args: Prisma.CanvasInstitutionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload>
+        }
+        createMany: {
+          args: Prisma.CanvasInstitutionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CanvasInstitutionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload>[]
+        }
+        delete: {
+          args: Prisma.CanvasInstitutionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload>
+        }
+        update: {
+          args: Prisma.CanvasInstitutionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload>
+        }
+        deleteMany: {
+          args: Prisma.CanvasInstitutionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CanvasInstitutionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CanvasInstitutionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload>[]
+        }
+        upsert: {
+          args: Prisma.CanvasInstitutionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CanvasInstitutionPayload>
+        }
+        aggregate: {
+          args: Prisma.CanvasInstitutionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCanvasInstitution>
+        }
+        groupBy: {
+          args: Prisma.CanvasInstitutionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CanvasInstitutionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CanvasInstitutionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CanvasInstitutionCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -592,6 +667,17 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const CanvasInstitutionScalarFieldEnum = {
+  id: 'id',
+  baseUrl: 'baseUrl',
+  name: 'name',
+  clientId: 'clientId',
+  clientSecret: 'clientSecret'
+} as const
+
+export type CanvasInstitutionScalarFieldEnum = (typeof CanvasInstitutionScalarFieldEnum)[keyof typeof CanvasInstitutionScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -600,6 +686,10 @@ export const UserScalarFieldEnum = {
   googleAccessToken: 'googleAccessToken',
   googleRefreshToken: 'googleRefreshToken',
   googleTokenExpiry: 'googleTokenExpiry',
+  canvasInstitutionId: 'canvasInstitutionId',
+  canvasAccessToken: 'canvasAccessToken',
+  canvasRefreshToken: 'canvasRefreshToken',
+  canvasTokenExpiry: 'canvasTokenExpiry',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -616,6 +706,7 @@ export const CalendarEventScalarFieldEnum = {
   endDate: 'endDate',
   source: 'source',
   googleId: 'googleId',
+  canvasId: 'canvasId',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -790,6 +881,7 @@ export type PrismaClientOptions = ({
   comments?: runtime.SqlCommenterPlugin[]
 }
 export type GlobalOmitConfig = {
+  canvasInstitution?: Prisma.CanvasInstitutionOmit
   user?: Prisma.UserOmit
   calendarEvent?: Prisma.CalendarEventOmit
 }

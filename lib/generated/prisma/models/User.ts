@@ -32,6 +32,10 @@ export type UserMinAggregateOutputType = {
   googleAccessToken: string | null
   googleRefreshToken: string | null
   googleTokenExpiry: Date | null
+  canvasInstitutionId: string | null
+  canvasAccessToken: string | null
+  canvasRefreshToken: string | null
+  canvasTokenExpiry: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -44,6 +48,10 @@ export type UserMaxAggregateOutputType = {
   googleAccessToken: string | null
   googleRefreshToken: string | null
   googleTokenExpiry: Date | null
+  canvasInstitutionId: string | null
+  canvasAccessToken: string | null
+  canvasRefreshToken: string | null
+  canvasTokenExpiry: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,6 +64,10 @@ export type UserCountAggregateOutputType = {
   googleAccessToken: number
   googleRefreshToken: number
   googleTokenExpiry: number
+  canvasInstitutionId: number
+  canvasAccessToken: number
+  canvasRefreshToken: number
+  canvasTokenExpiry: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -70,6 +82,10 @@ export type UserMinAggregateInputType = {
   googleAccessToken?: true
   googleRefreshToken?: true
   googleTokenExpiry?: true
+  canvasInstitutionId?: true
+  canvasAccessToken?: true
+  canvasRefreshToken?: true
+  canvasTokenExpiry?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -82,6 +98,10 @@ export type UserMaxAggregateInputType = {
   googleAccessToken?: true
   googleRefreshToken?: true
   googleTokenExpiry?: true
+  canvasInstitutionId?: true
+  canvasAccessToken?: true
+  canvasRefreshToken?: true
+  canvasTokenExpiry?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -94,6 +114,10 @@ export type UserCountAggregateInputType = {
   googleAccessToken?: true
   googleRefreshToken?: true
   googleTokenExpiry?: true
+  canvasInstitutionId?: true
+  canvasAccessToken?: true
+  canvasRefreshToken?: true
+  canvasTokenExpiry?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -179,6 +203,10 @@ export type UserGroupByOutputType = {
   googleAccessToken: string | null
   googleRefreshToken: string | null
   googleTokenExpiry: Date | null
+  canvasInstitutionId: string | null
+  canvasAccessToken: string | null
+  canvasRefreshToken: string | null
+  canvasTokenExpiry: Date | null
   createdAt: Date
   updatedAt: Date
   _count: UserCountAggregateOutputType | null
@@ -212,8 +240,13 @@ export type UserWhereInput = {
   googleAccessToken?: Prisma.StringNullableFilter<"User"> | string | null
   googleRefreshToken?: Prisma.StringNullableFilter<"User"> | string | null
   googleTokenExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  canvasInstitutionId?: Prisma.StringNullableFilter<"User"> | string | null
+  canvasAccessToken?: Prisma.StringNullableFilter<"User"> | string | null
+  canvasRefreshToken?: Prisma.StringNullableFilter<"User"> | string | null
+  canvasTokenExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  canvasInstitution?: Prisma.XOR<Prisma.CanvasInstitutionNullableScalarRelationFilter, Prisma.CanvasInstitutionWhereInput> | null
   events?: Prisma.CalendarEventListRelationFilter
 }
 
@@ -225,8 +258,13 @@ export type UserOrderByWithRelationInput = {
   googleAccessToken?: Prisma.SortOrderInput | Prisma.SortOrder
   googleRefreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
   googleTokenExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasInstitutionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasAccessToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasRefreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasTokenExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  canvasInstitution?: Prisma.CanvasInstitutionOrderByWithRelationInput
   events?: Prisma.CalendarEventOrderByRelationAggregateInput
 }
 
@@ -241,8 +279,13 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   googleAccessToken?: Prisma.StringNullableFilter<"User"> | string | null
   googleRefreshToken?: Prisma.StringNullableFilter<"User"> | string | null
   googleTokenExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  canvasInstitutionId?: Prisma.StringNullableFilter<"User"> | string | null
+  canvasAccessToken?: Prisma.StringNullableFilter<"User"> | string | null
+  canvasRefreshToken?: Prisma.StringNullableFilter<"User"> | string | null
+  canvasTokenExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  canvasInstitution?: Prisma.XOR<Prisma.CanvasInstitutionNullableScalarRelationFilter, Prisma.CanvasInstitutionWhereInput> | null
   events?: Prisma.CalendarEventListRelationFilter
 }, "id" | "email">
 
@@ -254,6 +297,10 @@ export type UserOrderByWithAggregationInput = {
   googleAccessToken?: Prisma.SortOrderInput | Prisma.SortOrder
   googleRefreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
   googleTokenExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasInstitutionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasAccessToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasRefreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  canvasTokenExpiry?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
@@ -272,6 +319,10 @@ export type UserScalarWhereWithAggregatesInput = {
   googleAccessToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   googleRefreshToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   googleTokenExpiry?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  canvasInstitutionId?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  canvasAccessToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  canvasRefreshToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  canvasTokenExpiry?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
 }
@@ -284,8 +335,12 @@ export type UserCreateInput = {
   googleAccessToken?: string | null
   googleRefreshToken?: string | null
   googleTokenExpiry?: Date | string | null
+  canvasAccessToken?: string | null
+  canvasRefreshToken?: string | null
+  canvasTokenExpiry?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  canvasInstitution?: Prisma.CanvasInstitutionCreateNestedOneWithoutUsersInput
   events?: Prisma.CalendarEventCreateNestedManyWithoutUserInput
 }
 
@@ -297,6 +352,10 @@ export type UserUncheckedCreateInput = {
   googleAccessToken?: string | null
   googleRefreshToken?: string | null
   googleTokenExpiry?: Date | string | null
+  canvasInstitutionId?: string | null
+  canvasAccessToken?: string | null
+  canvasRefreshToken?: string | null
+  canvasTokenExpiry?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   events?: Prisma.CalendarEventUncheckedCreateNestedManyWithoutUserInput
@@ -310,8 +369,12 @@ export type UserUpdateInput = {
   googleAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  canvasAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canvasInstitution?: Prisma.CanvasInstitutionUpdateOneWithoutUsersNestedInput
   events?: Prisma.CalendarEventUpdateManyWithoutUserNestedInput
 }
 
@@ -323,6 +386,10 @@ export type UserUncheckedUpdateInput = {
   googleAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  canvasInstitutionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   events?: Prisma.CalendarEventUncheckedUpdateManyWithoutUserNestedInput
@@ -336,6 +403,10 @@ export type UserCreateManyInput = {
   googleAccessToken?: string | null
   googleRefreshToken?: string | null
   googleTokenExpiry?: Date | string | null
+  canvasInstitutionId?: string | null
+  canvasAccessToken?: string | null
+  canvasRefreshToken?: string | null
+  canvasTokenExpiry?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -348,6 +419,9 @@ export type UserUpdateManyMutationInput = {
   googleAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  canvasAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -360,8 +434,22 @@ export type UserUncheckedUpdateManyInput = {
   googleAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  canvasInstitutionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type UserListRelationFilter = {
+  every?: Prisma.UserWhereInput
+  some?: Prisma.UserWhereInput
+  none?: Prisma.UserWhereInput
+}
+
+export type UserOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -372,6 +460,10 @@ export type UserCountOrderByAggregateInput = {
   googleAccessToken?: Prisma.SortOrder
   googleRefreshToken?: Prisma.SortOrder
   googleTokenExpiry?: Prisma.SortOrder
+  canvasInstitutionId?: Prisma.SortOrder
+  canvasAccessToken?: Prisma.SortOrder
+  canvasRefreshToken?: Prisma.SortOrder
+  canvasTokenExpiry?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -384,6 +476,10 @@ export type UserMaxOrderByAggregateInput = {
   googleAccessToken?: Prisma.SortOrder
   googleRefreshToken?: Prisma.SortOrder
   googleTokenExpiry?: Prisma.SortOrder
+  canvasInstitutionId?: Prisma.SortOrder
+  canvasAccessToken?: Prisma.SortOrder
+  canvasRefreshToken?: Prisma.SortOrder
+  canvasTokenExpiry?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -396,6 +492,10 @@ export type UserMinOrderByAggregateInput = {
   googleAccessToken?: Prisma.SortOrder
   googleRefreshToken?: Prisma.SortOrder
   googleTokenExpiry?: Prisma.SortOrder
+  canvasInstitutionId?: Prisma.SortOrder
+  canvasAccessToken?: Prisma.SortOrder
+  canvasRefreshToken?: Prisma.SortOrder
+  canvasTokenExpiry?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -405,8 +505,46 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type UserCreateNestedManyWithoutCanvasInstitutionInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCanvasInstitutionInput, Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput> | Prisma.UserCreateWithoutCanvasInstitutionInput[] | Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCanvasInstitutionInput | Prisma.UserCreateOrConnectWithoutCanvasInstitutionInput[]
+  createMany?: Prisma.UserCreateManyCanvasInstitutionInputEnvelope
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUncheckedCreateNestedManyWithoutCanvasInstitutionInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCanvasInstitutionInput, Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput> | Prisma.UserCreateWithoutCanvasInstitutionInput[] | Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCanvasInstitutionInput | Prisma.UserCreateOrConnectWithoutCanvasInstitutionInput[]
+  createMany?: Prisma.UserCreateManyCanvasInstitutionInputEnvelope
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+}
+
+export type UserUpdateManyWithoutCanvasInstitutionNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCanvasInstitutionInput, Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput> | Prisma.UserCreateWithoutCanvasInstitutionInput[] | Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCanvasInstitutionInput | Prisma.UserCreateOrConnectWithoutCanvasInstitutionInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutCanvasInstitutionInput | Prisma.UserUpsertWithWhereUniqueWithoutCanvasInstitutionInput[]
+  createMany?: Prisma.UserCreateManyCanvasInstitutionInputEnvelope
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutCanvasInstitutionInput | Prisma.UserUpdateWithWhereUniqueWithoutCanvasInstitutionInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutCanvasInstitutionInput | Prisma.UserUpdateManyWithWhereWithoutCanvasInstitutionInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+}
+
+export type UserUncheckedUpdateManyWithoutCanvasInstitutionNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCanvasInstitutionInput, Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput> | Prisma.UserCreateWithoutCanvasInstitutionInput[] | Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCanvasInstitutionInput | Prisma.UserCreateOrConnectWithoutCanvasInstitutionInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutCanvasInstitutionInput | Prisma.UserUpsertWithWhereUniqueWithoutCanvasInstitutionInput[]
+  createMany?: Prisma.UserCreateManyCanvasInstitutionInputEnvelope
+  set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutCanvasInstitutionInput | Prisma.UserUpdateWithWhereUniqueWithoutCanvasInstitutionInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutCanvasInstitutionInput | Prisma.UserUpdateManyWithWhereWithoutCanvasInstitutionInput[]
+  deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
@@ -435,6 +573,83 @@ export type UserUpdateOneRequiredWithoutEventsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutEventsInput, Prisma.UserUpdateWithoutEventsInput>, Prisma.UserUncheckedUpdateWithoutEventsInput>
 }
 
+export type UserCreateWithoutCanvasInstitutionInput = {
+  id?: string
+  name?: string | null
+  email: string
+  hashedPassword: string
+  googleAccessToken?: string | null
+  googleRefreshToken?: string | null
+  googleTokenExpiry?: Date | string | null
+  canvasAccessToken?: string | null
+  canvasRefreshToken?: string | null
+  canvasTokenExpiry?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  events?: Prisma.CalendarEventCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCanvasInstitutionInput = {
+  id?: string
+  name?: string | null
+  email: string
+  hashedPassword: string
+  googleAccessToken?: string | null
+  googleRefreshToken?: string | null
+  googleTokenExpiry?: Date | string | null
+  canvasAccessToken?: string | null
+  canvasRefreshToken?: string | null
+  canvasTokenExpiry?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  events?: Prisma.CalendarEventUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCanvasInstitutionInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCanvasInstitutionInput, Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput>
+}
+
+export type UserCreateManyCanvasInstitutionInputEnvelope = {
+  data: Prisma.UserCreateManyCanvasInstitutionInput | Prisma.UserCreateManyCanvasInstitutionInput[]
+  skipDuplicates?: boolean
+}
+
+export type UserUpsertWithWhereUniqueWithoutCanvasInstitutionInput = {
+  where: Prisma.UserWhereUniqueInput
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCanvasInstitutionInput, Prisma.UserUncheckedUpdateWithoutCanvasInstitutionInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCanvasInstitutionInput, Prisma.UserUncheckedCreateWithoutCanvasInstitutionInput>
+}
+
+export type UserUpdateWithWhereUniqueWithoutCanvasInstitutionInput = {
+  where: Prisma.UserWhereUniqueInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCanvasInstitutionInput, Prisma.UserUncheckedUpdateWithoutCanvasInstitutionInput>
+}
+
+export type UserUpdateManyWithWhereWithoutCanvasInstitutionInput = {
+  where: Prisma.UserScalarWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutCanvasInstitutionInput>
+}
+
+export type UserScalarWhereInput = {
+  AND?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  OR?: Prisma.UserScalarWhereInput[]
+  NOT?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
+  id?: Prisma.StringFilter<"User"> | string
+  name?: Prisma.StringNullableFilter<"User"> | string | null
+  email?: Prisma.StringFilter<"User"> | string
+  hashedPassword?: Prisma.StringFilter<"User"> | string
+  googleAccessToken?: Prisma.StringNullableFilter<"User"> | string | null
+  googleRefreshToken?: Prisma.StringNullableFilter<"User"> | string | null
+  googleTokenExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  canvasInstitutionId?: Prisma.StringNullableFilter<"User"> | string | null
+  canvasAccessToken?: Prisma.StringNullableFilter<"User"> | string | null
+  canvasRefreshToken?: Prisma.StringNullableFilter<"User"> | string | null
+  canvasTokenExpiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+}
+
 export type UserCreateWithoutEventsInput = {
   id?: string
   name?: string | null
@@ -443,8 +658,12 @@ export type UserCreateWithoutEventsInput = {
   googleAccessToken?: string | null
   googleRefreshToken?: string | null
   googleTokenExpiry?: Date | string | null
+  canvasAccessToken?: string | null
+  canvasRefreshToken?: string | null
+  canvasTokenExpiry?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  canvasInstitution?: Prisma.CanvasInstitutionCreateNestedOneWithoutUsersInput
 }
 
 export type UserUncheckedCreateWithoutEventsInput = {
@@ -455,6 +674,10 @@ export type UserUncheckedCreateWithoutEventsInput = {
   googleAccessToken?: string | null
   googleRefreshToken?: string | null
   googleTokenExpiry?: Date | string | null
+  canvasInstitutionId?: string | null
+  canvasAccessToken?: string | null
+  canvasRefreshToken?: string | null
+  canvasTokenExpiry?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -483,8 +706,12 @@ export type UserUpdateWithoutEventsInput = {
   googleAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  canvasAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  canvasInstitution?: Prisma.CanvasInstitutionUpdateOneWithoutUsersNestedInput
 }
 
 export type UserUncheckedUpdateWithoutEventsInput = {
@@ -495,6 +722,72 @@ export type UserUncheckedUpdateWithoutEventsInput = {
   googleAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   googleTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  canvasInstitutionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type UserCreateManyCanvasInstitutionInput = {
+  id?: string
+  name?: string | null
+  email: string
+  hashedPassword: string
+  googleAccessToken?: string | null
+  googleRefreshToken?: string | null
+  googleTokenExpiry?: Date | string | null
+  canvasAccessToken?: string | null
+  canvasRefreshToken?: string | null
+  canvasTokenExpiry?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type UserUpdateWithoutCanvasInstitutionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  googleAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  canvasAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  events?: Prisma.CalendarEventUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCanvasInstitutionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  googleAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  canvasAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  events?: Prisma.CalendarEventUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateManyWithoutCanvasInstitutionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  hashedPassword?: Prisma.StringFieldUpdateOperationsInput | string
+  googleAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  googleTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  canvasAccessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasRefreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  canvasTokenExpiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -538,8 +831,13 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   googleAccessToken?: boolean
   googleRefreshToken?: boolean
   googleTokenExpiry?: boolean
+  canvasInstitutionId?: boolean
+  canvasAccessToken?: boolean
+  canvasRefreshToken?: boolean
+  canvasTokenExpiry?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  canvasInstitution?: boolean | Prisma.User$canvasInstitutionArgs<ExtArgs>
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -552,8 +850,13 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   googleAccessToken?: boolean
   googleRefreshToken?: boolean
   googleTokenExpiry?: boolean
+  canvasInstitutionId?: boolean
+  canvasAccessToken?: boolean
+  canvasRefreshToken?: boolean
+  canvasTokenExpiry?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  canvasInstitution?: boolean | Prisma.User$canvasInstitutionArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -564,8 +867,13 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   googleAccessToken?: boolean
   googleRefreshToken?: boolean
   googleTokenExpiry?: boolean
+  canvasInstitutionId?: boolean
+  canvasAccessToken?: boolean
+  canvasRefreshToken?: boolean
+  canvasTokenExpiry?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  canvasInstitution?: boolean | Prisma.User$canvasInstitutionArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -576,21 +884,31 @@ export type UserSelectScalar = {
   googleAccessToken?: boolean
   googleRefreshToken?: boolean
   googleTokenExpiry?: boolean
+  canvasInstitutionId?: boolean
+  canvasAccessToken?: boolean
+  canvasRefreshToken?: boolean
+  canvasTokenExpiry?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "hashedPassword" | "googleAccessToken" | "googleRefreshToken" | "googleTokenExpiry" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "hashedPassword" | "googleAccessToken" | "googleRefreshToken" | "googleTokenExpiry" | "canvasInstitutionId" | "canvasAccessToken" | "canvasRefreshToken" | "canvasTokenExpiry" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  canvasInstitution?: boolean | Prisma.User$canvasInstitutionArgs<ExtArgs>
   events?: boolean | Prisma.User$eventsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
-export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
-export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  canvasInstitution?: boolean | Prisma.User$canvasInstitutionArgs<ExtArgs>
+}
+export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  canvasInstitution?: boolean | Prisma.User$canvasInstitutionArgs<ExtArgs>
+}
 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
+    canvasInstitution: Prisma.$CanvasInstitutionPayload<ExtArgs> | null
     events: Prisma.$CalendarEventPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -601,6 +919,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     googleAccessToken: string | null
     googleRefreshToken: string | null
     googleTokenExpiry: Date | null
+    canvasInstitutionId: string | null
+    canvasAccessToken: string | null
+    canvasRefreshToken: string | null
+    canvasTokenExpiry: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["user"]>
@@ -997,6 +1319,7 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  canvasInstitution<T extends Prisma.User$canvasInstitutionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$canvasInstitutionArgs<ExtArgs>>): Prisma.Prisma__CanvasInstitutionClient<runtime.Types.Result.GetResult<Prisma.$CanvasInstitutionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   events<T extends Prisma.User$eventsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CalendarEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1034,6 +1357,10 @@ export interface UserFieldRefs {
   readonly googleAccessToken: Prisma.FieldRef<"User", 'String'>
   readonly googleRefreshToken: Prisma.FieldRef<"User", 'String'>
   readonly googleTokenExpiry: Prisma.FieldRef<"User", 'DateTime'>
+  readonly canvasInstitutionId: Prisma.FieldRef<"User", 'String'>
+  readonly canvasAccessToken: Prisma.FieldRef<"User", 'String'>
+  readonly canvasRefreshToken: Prisma.FieldRef<"User", 'String'>
+  readonly canvasTokenExpiry: Prisma.FieldRef<"User", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
 }
@@ -1285,6 +1612,10 @@ export type UserCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    */
   data: Prisma.UserCreateManyInput | Prisma.UserCreateManyInput[]
   skipDuplicates?: boolean
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1355,6 +1686,10 @@ export type UserUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many Users to update.
    */
   limit?: number
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
@@ -1421,6 +1756,25 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Users to delete.
    */
   limit?: number
+}
+
+/**
+ * User.canvasInstitution
+ */
+export type User$canvasInstitutionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CanvasInstitution
+   */
+  select?: Prisma.CanvasInstitutionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CanvasInstitution
+   */
+  omit?: Prisma.CanvasInstitutionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CanvasInstitutionInclude<ExtArgs> | null
+  where?: Prisma.CanvasInstitutionWhereInput
 }
 
 /**

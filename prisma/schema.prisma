@@ -7,17 +7,31 @@ generator client {
   output   = "../lib/generated/prisma"
 }
 
+model CanvasInstitution {
+  id           String   @id @default(cuid())
+  baseUrl      String   @unique
+  name         String
+  clientId     String
+  clientSecret String
+  users        User[]
+}
+
 model User {
-  id                 String           @id @default(cuid())
-  name               String?
-  email              String           @unique
-  hashedPassword     String
-  googleAccessToken  String?
-  googleRefreshToken String?
-  googleTokenExpiry  DateTime?
-  events             CalendarEvent[]
-  createdAt          DateTime         @default(now())
-  updatedAt          DateTime         @updatedAt
+  id                    String             @id @default(cuid())
+  name                  String?
+  email                 String             @unique
+  hashedPassword        String
+  googleAccessToken     String?
+  googleRefreshToken    String?
+  googleTokenExpiry     DateTime?
+  canvasInstitutionId   String?
+  canvasInstitution     CanvasInstitution?  @relation(fields: [canvasInstitutionId], references: [id], onDelete: SetNull)
+  canvasAccessToken     String?
+  canvasRefreshToken    String?
+  canvasTokenExpiry     DateTime?
+  events                CalendarEvent[]
+  createdAt             DateTime           @default(now())
+  updatedAt             DateTime           @updatedAt
 }
 
 model CalendarEvent {
@@ -29,6 +43,7 @@ model CalendarEvent {
   endDate   DateTime
   source    String   @default("manual")
   googleId  String?
+  canvasId  String?
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
