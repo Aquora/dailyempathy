@@ -90,12 +90,12 @@ export async function POST() {
     const courses: CanvasCourse[] = [];
     let courseUrl: string | null = `${baseUrl}/api/v1/courses?per_page=${PER_PAGE}&enrollment_state=active`;
     while (courseUrl) {
-      const { data, nextPage } = await canvasFetch<CanvasCourse>(
+      const result = await canvasFetch<CanvasCourse>(
         courseUrl,
         accessToken
       );
-      courses.push(...data);
-      courseUrl = nextPage;
+      courses.push(...result.data);
+      courseUrl = result.nextPage;
     }
 
     const courseNames: Record<number, string> = {};
@@ -108,8 +108,11 @@ export async function POST() {
     for (const course of courses) {
       let assignUrl: string | null = `${baseUrl}/api/v1/courses/${course.id}/assignments?per_page=${PER_PAGE}`;
       while (assignUrl) {
-        const { data: assignments, nextPage } =
-          await canvasFetch<CanvasAssignment>(assignUrl, accessToken);
+        const assignResult = await canvasFetch<CanvasAssignment>(
+          assignUrl,
+          accessToken
+        );
+        const assignments = assignResult.data;
 
         for (const a of assignments) {
           if (!a.due_at) continue;
@@ -153,7 +156,7 @@ export async function POST() {
           }
         }
 
-        assignUrl = nextPage;
+        assignUrl = assignResult.nextPage;
       }
     }
 
