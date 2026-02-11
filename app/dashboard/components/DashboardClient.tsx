@@ -4,22 +4,12 @@ import { useCallback, useEffect, useState } from "react";
 import CalendarWidget from "./CalendarWidget";
 import AddEventModal from "./AddEventModal";
 import UpcomingEvents from "./UpcomingEvents";
-import GoogleImportDropdown from "./GoogleImportDropdown";
-import CanvasImportDropdown from "./CanvasImportDropdown";
 import TodoList from "./TodoList";
 import SpotifyLofiWidget from "./SpotifyLofiWidget";
 import type { CalendarEvent } from "./types";
 import DayEventsOverlay from "./DayEventsOverlay";
 
-interface DashboardClientProps {
-  googleConnected: boolean;
-  canvasConnected: boolean;
-}
-
-export default function DashboardClient({
-  googleConnected,
-  canvasConnected,
-}: DashboardClientProps) {
+export default function DashboardClient() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
@@ -56,19 +46,8 @@ export default function DashboardClient({
             onDaySelect={handleDaySelect}
             onAddEvent={() => setShowAddModal(true)}
             selectedDate={selectedDate}
-            googleConnected={googleConnected}
-          >
-            <div className="flex items-center gap-2">
-              <CanvasImportDropdown
-                canvasConnected={canvasConnected}
-                onSyncComplete={fetchEvents}
-              />
-              <GoogleImportDropdown
-                googleConnected={googleConnected}
-                onSyncComplete={fetchEvents}
-              />
-            </div>
-          </CalendarWidget>
+            googleConnected={false}
+          />
 
           {/* Todo list under calendar */}
           <TodoList
@@ -89,7 +68,7 @@ export default function DashboardClient({
         </div>
       </div>
 
-      {/* Add Event Modal */}
+      {/* Add Task Modal */}
       <AddEventModal
         isOpen={showAddModal}
         onClose={() => setShowAddModal(false)}
@@ -104,8 +83,12 @@ export default function DashboardClient({
         events={events}
         onClose={() => setShowDayOverlay(false)}
         onEventsChanged={fetchEvents}
+        onAddTask={(date) => {
+          setSelectedDate(date);
+          setShowDayOverlay(false);
+          setShowAddModal(true);
+        }}
       />
-
     </>
   );
 }

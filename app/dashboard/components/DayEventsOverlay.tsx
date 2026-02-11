@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HiXMark } from "react-icons/hi2";
+import { HiPlus, HiXMark } from "react-icons/hi2";
 import type { CalendarEvent } from "./types";
 import EditEventModal from "./EditEventModal";
 
@@ -11,6 +11,7 @@ interface DayEventsOverlayProps {
   events: CalendarEvent[];
   onClose: () => void;
   onEventsChanged: () => void;
+  onAddTask: (date: Date) => void;
 }
 
 function isDateWithinEvent(date: Date, event: CalendarEvent) {
@@ -44,6 +45,7 @@ export default function DayEventsOverlay({
   events,
   onClose,
   onEventsChanged,
+  onAddTask,
 }: DayEventsOverlayProps) {
   const [editingEvent, setEditingEvent] = useState<CalendarEvent | null>(null);
   const [editOpen, setEditOpen] = useState(false);
@@ -85,14 +87,23 @@ export default function DayEventsOverlay({
               </p>
               <p className="mt-1 font-serif text-lg text-white/90">{heading}</p>
             </div>
-            <button
-              onClick={onClose}
-              className="flex h-8 w-8 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/5 hover:text-white"
-            >
-              <HiXMark className="h-4 w-4" />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => onAddTask(date)}
+                className="flex h-8 w-8 items-center justify-center rounded-md text-gold transition-colors hover:bg-gold/10"
+                aria-label="Add task for this day"
+              >
+                <HiPlus className="h-4 w-4" />
+              </button>
+              <button
+                onClick={onClose}
+                className="flex h-8 w-8 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/5 hover:text-white"
+                aria-label="Close day overview"
+              >
+                <HiXMark className="h-4 w-4" />
+              </button>
+            </div>
           </div>
-
           {dayEvents.length === 0 ? (
             <div className="py-10 text-center">
               <p className="font-mono text-xs text-white/30">

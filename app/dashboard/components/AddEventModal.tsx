@@ -27,6 +27,7 @@ export default function AddEventModal({
 }: AddEventModalProps) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Personal");
+  const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [status, setStatus] = useState("planned");
   const [loading, setLoading] = useState(false);
@@ -34,9 +35,6 @@ export default function AddEventModal({
 
   if (!isOpen) return null;
 
-  const startDateStr = defaultDate
-    ? defaultDate.toISOString().split("T")[0]
-    : new Date().toISOString().split("T")[0];
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -58,7 +56,7 @@ export default function AddEventModal({
           category,
           endDate,
           status,
-          startDate: startDateStr,
+          startDate: startDate,
         }),
       });
 
@@ -71,6 +69,7 @@ export default function AddEventModal({
       // Reset form
       setTitle("");
       setCategory("Personal");
+      setStartDate("");
       setEndDate("");
       setStatus("planned");
       onEventAdded();
@@ -145,9 +144,9 @@ export default function AddEventModal({
             </label>
             <input
               type="date"
-              value={startDateStr}
-              readOnly
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/50 outline-none"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none transition-colors focus:border-gold/50"
             />
           </div>
 
@@ -161,7 +160,7 @@ export default function AddEventModal({
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
               required
-              min={startDateStr}
+              min={startDate}
               className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none transition-colors focus:border-gold/50"
             />
           </div>

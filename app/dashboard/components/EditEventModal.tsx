@@ -28,6 +28,7 @@ export default function EditEventModal({
 }: EditEventModalProps) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Personal");
+  const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [status, setStatus] = useState("planned");
   const [loading, setLoading] = useState(false);
@@ -38,6 +39,8 @@ export default function EditEventModal({
       setTitle(event.title);
       setCategory(event.category || "Personal");
       setStatus(event.status || "planned");
+      const start = new Date(event.startDate);
+      setStartDate(start.toISOString().split("T")[0]);
       const end = new Date(event.endDate);
       setEndDate(end.toISOString().split("T")[0]);
       setError("");
@@ -58,8 +61,8 @@ export default function EditEventModal({
       return;
     }
 
-    if (!title.trim() || !endDate) {
-      setError("Title and end date are required");
+    if (!title.trim() || !startDate || !endDate) {
+      setError("Title, start date, and end date are required");
       return;
     }
 
@@ -73,6 +76,7 @@ export default function EditEventModal({
           title: title.trim(),
           category,
           status,
+          startDate,
           endDate,
         }),
       });
@@ -148,16 +152,18 @@ export default function EditEventModal({
             </select>
           </div>
 
-          {/* Start Date (read-only) */}
+          {/* Start Date */}
           <div>
             <label className="mb-1.5 block font-mono text-xs tracking-widest text-white/40">
               START DATE
             </label>
             <input
               type="date"
-              value={startDateStr}
-              readOnly
-              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/50 outline-none"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              required
+              className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none transition-colors focus:border-gold/50"
+
             />
           </div>
 
@@ -171,7 +177,7 @@ export default function EditEventModal({
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
               required
-              min={startDateStr}
+              min={startDate || startDateStr}
               className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white outline-none transition-colors focus:border-gold/50"
             />
           </div>
